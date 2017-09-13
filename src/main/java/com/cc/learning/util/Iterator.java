@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
  * differ from enumerations in two ways:
  *
  * <ul>
+ *     迭代器允许调用者删除其中的元素
  *      <li> Iterators allow the caller to remove elements from the
  *           underlying collection during the iteration with well-defined
  *           semantics.
@@ -35,6 +36,7 @@ import java.util.NoSuchElementException;
  */
 public interface Iterator<E> {
     /**
+     * 如果迭代其有更多的元素，返回true
      * Returns {@code true} if the iteration has more elements.
      * (In other words, returns {@code true} if {@link #next} would
      * return an element rather than throwing an exception.)
@@ -44,6 +46,7 @@ public interface Iterator<E> {
     boolean hasNext();
 
     /**
+     * 返回迭代中下一个元素
      * Returns the next element in the iteration.
      *
      * @return the next element in the iteration
@@ -52,6 +55,7 @@ public interface Iterator<E> {
     E next();
 
     /**
+     * 从集合中删除返回的最后一个元素，每次使用next后只能调用一次，
      * Removes from the underlying collection the last element returned
      * by this iterator (optional operation).  This method can be called
      * only once per call to {@link #next}.  The behavior of an iterator
